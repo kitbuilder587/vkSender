@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class PageScraper {
     WebDriver driver;
@@ -30,13 +32,25 @@ public class PageScraper {
             getPage(messageHref);
             WebElement input = driver.findElement(By.cssSelector(".im-chat-input--textarea"));
             WebElement typeField = input.findElement(By.cssSelector(".im-chat-input--text"));
-            typeField.sendKeys("ЭТО BILLY!!!!!!");
+            ArrayList<String> phrases = new ArrayList<>();
+            phrases.add("Привет, это мой второй аккаунт, я случайно заметил твою страницу, понравились фотографии. Если хочешь продолжить общение, вот мой телеграм (@zajdelovm) , потому что я не сижу на этом аккаунте. Вот фотография, чтобы ты меня не пугалась");
+            phrases.add("Здравствуй, это мой второй аккаунт вк, я случайно заметил твой профиль, понравились фотографии. Если хочешь продолжить общение, вот мой телеграм (@zajdelovm) , потому что я не сижу на этом аккаунте. Вот фотография, чтобы ты меня не пугалась");
+            phrases.add("Доброго времени суток, это мой второй аккаунт вк, я случайно заметил твой профиль, понравились фотографии. Если хочешь продолжить общение, вот мой телеграм: @zajdelovm , потому что я не сижу на этом аккаунте. Вот фотография, чтобы ты меня не пугалась");
+            phrases.add("Доброго времени суток, это мой второй аккаунт вк, я случайно заметил твой профиль, понравились фотографии. Если хочешь продолжить общение, вот мой телеграм: @zajdelovm , потому что я не сижу на этом аккаунте. Вот фотография, чтобы ты поняла, что такое арийская раса");
+            Random random = new Random();
+            int si = random.nextInt(phrases.size()-1);
+            typeField.sendKeys(phrases.get(si));
             WebElement send = driver.findElement(By.cssSelector(".im-chat-input .im-send-btn"));
             send.click();
             WebElement pictureButton = input.findElement(By.cssSelector(".im-chat-input--attach-file"));
-            pictureButton.sendKeys("/home/nick/Pictures/XGNDhSIft0o.jpg");
+            ArrayList<String> photos = new ArrayList<>();
+            photos.add("/home/nick/Pictures/44423234234.jpg");
+            photos.add("/home/nick/Pictures/SoggyRemarkableAddax-size_restricted.gif");
+            photos.add("/home/nick/Pictures/miklosh.png");
+            photos.add("/home/nick/Pictures/yjvHaBIPlf8.jpg");
+            pictureButton.sendKeys(photos.get(si));
             try {
-                Thread.sleep(3000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

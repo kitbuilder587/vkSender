@@ -28,7 +28,7 @@ public class BrowserAdapter {
     public void scrape() throws InterruptedException {
         driver.get(href);
 
-        for(int i=0;i<50;i++){
+        for(int i=0;i<10;i++){
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,10000)", "");
             Thread.sleep(1000);
