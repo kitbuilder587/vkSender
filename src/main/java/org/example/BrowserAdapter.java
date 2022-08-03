@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,8 +25,15 @@ public class BrowserAdapter {
     }
 
 
-    public void scrape(){
+    public void scrape() throws InterruptedException {
         driver.get(href);
+
+        for(int i=0;i<50;i++){
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,10000)", "");
+            Thread.sleep(1000);
+        }
+
         ProfileHrefsScraper profileHrefsScraper = new ProfileHrefsScraper(driver);
         List<String> hrefs = profileHrefsScraper.getProfilesHrefs();
         for( String href  : hrefs ){
